@@ -1,0 +1,51 @@
+.container{
+    height:100%;
+    margin:1% 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonsForm{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    height: 5vh;
+    width: 100vw;
+}
+
+h2{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+
+.filesList{
+    padding: 0 3%;
+}
+
+.filesList .item{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255);
+    border-radius: 10px;
+}
+
+
+
+.item .file p{
+    margin-bottom: 0.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.item .file span{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+.buttonDeleteFile{
+    padding: 0.3rem;
+}
