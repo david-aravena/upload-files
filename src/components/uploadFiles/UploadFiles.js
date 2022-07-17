@@ -5,6 +5,7 @@ import {UploadFilesUI} from './UploadFilesUI'
 
 export const UploadFiles = () => {
     const [filesList, setFilesList] = useState([]);
+    const [progressUploadFile, setProgressUploadFile] = useState(null);
     
 
     const getFilesFromInput = (e) => {
@@ -25,12 +26,14 @@ export const UploadFiles = () => {
     const functions = {
         getFilesFromInput: getFilesFromInput,
         deleteFile: deleteFile,
-        setFilesList: setFilesList
+        setFilesList: setFilesList,
+        setProgressUploadFile: setProgressUploadFile
     }
 
 
     const states = {
-        filesList: filesList
+        filesList: filesList,
+        progressUploadFile: progressUploadFile
     }
 
     

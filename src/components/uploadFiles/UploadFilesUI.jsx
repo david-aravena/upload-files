@@ -1,4 +1,5 @@
 import './uploadFilesUI.css'
+import { sendFilesToFirebase } from '../../services/sendFilesToFirebase'
 
 export const UploadFilesUI = ({functions, states}) => {
 
@@ -18,6 +19,7 @@ export const UploadFilesUI = ({functions, states}) => {
         <div className="container">
             <div className="buttonsForm">
                 <input type="file" id="inputFiles"multiple onChange={functions.getFilesFromInput} style={{color: "transparent"}} />
+                <button onClick={() => sendFilesToFirebase(states.filesList, functions.setProgressUploadFile)}>Subir archivos</button>
             </div>
 
 
