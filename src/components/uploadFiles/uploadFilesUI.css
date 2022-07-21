@@ -28,11 +28,10 @@ h2{
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    margin-bottom: 10px;
     background: rgba(255, 255, 255);
     border-radius: 10px;
+    margin-bottom: 1rem;
 }
-
 
 
 .item .file p{
@@ -48,4 +47,13 @@ h2{
 
 .buttonDeleteFile{
     padding: 0.3rem;
+}
+
+.downloadLink{
+    background: white;
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 0 0 10px 10px;
+    padding: 0 1rem;
+    font-size: 1.2rem;
 }

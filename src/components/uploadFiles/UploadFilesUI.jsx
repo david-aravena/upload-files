@@ -1,25 +1,13 @@
 import './uploadFilesUI.css'
-import { sendFilesToFirebase } from '../../services/sendFilesToFirebase'
+import { showSizeFile } from '../../services/showSizeFiles'
 
 export const UploadFilesUI = ({functions, states}) => {
-
-    const showSizeFile = (size) => {
-        if(size >= 1000 && size <= 999999){
-            return `${Math.round(size/1000)} KB`
-        } else if(size >= 1000000 && size <= 999999999){
-            return `${Math.round(size/1000000)} MB`
-        } else if(size >= 1000000000) {
-            return `${Math.round(size/1000000000)} GB`
-        } else{
-            return `${size} bytes`
-        }
-    }
 
     return(
         <div className="container">
             <div className="buttonsForm">
                 <input type="file" id="inputFiles"multiple onChange={functions.getFilesFromInput} style={{color: "transparent"}} />
-                <button onClick={() => sendFilesToFirebase(states.filesList, functions.setProgressUploadFile)}>Subir archivos</button>
+                <button onClick={() => functions.uploadFiles()}>Subir archivos</button>
             </div>
 
 
@@ -28,7 +16,7 @@ export const UploadFilesUI = ({functions, states}) => {
             }
 
 
-            {states.filesList.length > 0 &&
+            {states.filesList.length > 0 && 
                 <div className="filesList">
                     {states.filesList.map((file, index) => {
                         return (

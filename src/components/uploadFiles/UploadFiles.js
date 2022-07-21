@@ -1,12 +1,22 @@
 import {useState} from 'react';
 import {UploadFilesUI} from './UploadFilesUI'
-
+import { sendFilesToFirebase } from '../../services/sendFilesToFirebase'
+import {UploadedFiles} from './../uploadedFiles/UploadedFiles'
 
 
 export const UploadFiles = () => {
     const [filesList, setFilesList] = useState([]);
-    const [progressUploadFile, setProgressUploadFile] = useState(null);
-    
+    const [uploadFilesProgress, setUploadFilesProgress] = useState(null);
+    const [linksDownload, setLinksDownload] = useState([])
+
+
+    const uploadFiles = () => {
+        sendFilesToFirebase(filesList, setUploadFilesProgress, setLinksDownload, linksDownload);
+    }
+
+    const refreshPage = () => {
+        window.location.href = window.location.href;
+    }
 
     const getFilesFromInput = (e) => {
         const filesFromInput = e.target.files;
@@ -27,19 +37,25 @@ export const UploadFiles = () => {
         getFilesFromInput: getFilesFromInput,
         deleteFile: deleteFile,
         setFilesList: setFilesList,
-        setProgressUploadFile: setProgressUploadFile
+        uploadFiles: uploadFiles,
+        refreshPage: refreshPage
     }
 
 
     const states = {
         filesList: filesList,
-        progressUploadFile: progressUploadFile
+        uploadFilesProgress: uploadFilesProgress,
+        linksDownload: linksDownload
     }
 
     
     return(
         <>
-            <UploadFilesUI functions={functions} states={states} />
+            {uploadFilesProgress === null ?
+                <UploadFilesUI functions={functions} states={states} />
+            :
+                <UploadedFiles functions={functions} states={states} />
+            }
         </>
     );
 };
